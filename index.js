@@ -6,8 +6,7 @@ const bcrypt = require('bcrypt');
 const session = require('express-session');
 const cloudinary = require('cloudinary').v2;
 require('dotenv').config();
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/creativityHub').then(() => console.log('MongoDB Connected'))
-.catch(err => console.log(err));  
+
 const Post = require('./models/Post');
 const User = require('./models/user');
 
@@ -203,10 +202,17 @@ app.post('/creativity_hub/delete/:postId', async (req, res) => {
 
 
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-    console.log(`Server Working on Port ${PORT}`);
-});
 
+mongoose.connect(process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/creativityHub')
+.then(() => {
+    console.log('MongoDB Connected');
+
+    app.listen(PORT, () => {
+        console.log(`Server Working on Port ${PORT}`);
+    });
+
+})
+.catch(err => console.log(err));
 
 
 
