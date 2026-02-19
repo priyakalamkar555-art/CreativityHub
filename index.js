@@ -90,8 +90,7 @@ app.post('/creativity_hub/signup', async (req, res) => {
 
   } catch (err) {
     console.log("Signup Error:",err);
-    res.send(err.message);
-   // res.render('signup', { message: 'Something went wrong' });
+   res.render('signup', { message: 'Something went wrong' });
   }
 });
 
@@ -207,6 +206,7 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`Server Working on Port ${PORT}`);
 });
+
 
 
 
