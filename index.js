@@ -30,7 +30,8 @@ app.use(
 
 app.use(express.static(path.join(__dirname,'public')));
 app.use('/uploads',express.static('uploads'));
-app.get('/creativity_hub', (req,res) => {
+
+app.get('/', (req,res) => {
     res.render('index');
 });
 
@@ -202,4 +203,5 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`Server Working on Port ${PORT}`);
 });
+
 
